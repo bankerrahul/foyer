@@ -1,0 +1,2 @@
+# Optional starting order: one Android package per line.
+# All other installed launchable apps are included automatically.

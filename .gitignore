@@ -1,0 +1,13 @@
+out/
+.secrets/
+.state/
+__pycache__/
+*.pyc
+*.jks
+*.keystore
+*.apk
+*.apk.idsig
+.env
+.env.*
+.DS_Store
+local.properties

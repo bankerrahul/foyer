@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" role="img" aria-labelledby="title">
+  <title id="title">Foyer</title>
+  <path fill="#162234" d="M24,0H84Q108,0 108,24V84Q108,108 84,108H24Q0,108 0,84V24Q0,0 24,0Z"/>
+  <path fill="#F3F5FA" d="M34,26H76V36H45V49H70V59H45V82H34Z"/>
+  <path fill="#9DBCE6" d="M76,59H82V82H76Z"/>
+</svg>
