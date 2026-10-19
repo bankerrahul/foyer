@@ -93,6 +93,23 @@ Approve the connection prompt on your TV when it appears. Some TVs need an extra
 
 Your changes are saved automatically. Hidden apps stay available in **All apps**, and newly installed apps appear automatically. Pressing **Back** in All apps takes you home; pressing it during a move cancels that move.
 
+## Update Foyer
+
+Open the same Codex or Claude Code conversation on the computer you used for setup. Keep the TV on with debugging enabled, then paste:
+
+```text
+Check whether a newer version of Foyer is available for my TV.
+Repository: https://github.com/bankerrahul/foyer
+Use my existing setup folder and follow the update instructions
+in docs/AI-SETUP.md. If there is an update, install it while keeping
+my app order, hidden apps, layout, HDMI shortcuts and Home button
+working as before. Keep my saved recovery information.
+Do not uninstall or reset anything. If something needed for the
+update is missing, explain it before making changes.
+```
+
+The assistant checks for an update, handles the commands, and checks that Foyer still works afterward. Keep your original setup folder so it can update Foyer without losing your settings.
+
 ## Return to your previous Home
 
 Want your old home screen back? Open the same Codex or Claude Code conversation on the computer you used for setup, keep the TV on with debugging enabled, and paste:

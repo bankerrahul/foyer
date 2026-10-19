@@ -1,6 +1,6 @@
 # Setup guide for Codex and Claude Code
 
-Use this guide when a user asks an AI assistant to install Foyer or restore their previous Home. It describes the existing workflow; it does not grant approval for unrelated device changes. Read [AGENTS.md](../AGENTS.md), [build and signing](BUILD.md), and [installation and recovery](INSTALL.md) before acting.
+Use this guide when a user asks an AI assistant to install or update Foyer, or restore their previous Home. It describes the existing workflow; it does not grant approval for unrelated device changes. Read [AGENTS.md](../AGENTS.md), [build and signing](BUILD.md), and [installation and recovery](INSTALL.md) before acting. For updates, use the update section below rather than repeating initial Home activation.
 
 ## Identify the TV and prepare the computer
 
@@ -21,7 +21,16 @@ Use this guide when a user asks an AI assistant to install Foyer or restore thei
 
 Keep this work scoped to the home screen. Do not debloat, uninstall packages, clear app data, change firmware or projector controls, or alter picture, HDMI, animation, power, or unrelated accessibility settings. Input discovery and Foyer shortcut preferences do not authorize changes to the TV's HDMI configuration.
 
-## Preserve updates and recovery
+## Update an existing installation
+
+1. Identify the user's TV and original setup folder. Preserve its signing files and first successful activation record. Check the working tree before fetching the official repository's latest source; do not discard local edits, replace private files, or overwrite a signing key. Explain any missing signing files or conflicting local changes before proceeding.
+2. Compare the installed app's version with the latest source's application version in `AndroidManifest.xml`. Documentation-only commits are not launcher updates. If no newer app version is available, tell the user; do not reinstall unnecessarily or invent a version bump to make an update appear newer.
+3. Record the existing Foyer preferences and Home method before updating. Preserve app order, hidden apps, appearance, input shortcuts, default Home selection, and the optional Home service's enabled state. Do not reset ordering with `--apps` or repeat `--activate` for a routine update.
+4. Build and test the newer source with the original signing key, then run the documented [update command](INSTALL.md#updates) against the explicit TV serial. Keep the APK and matching metadata together. If Android rejects the signing identity, stop; never uninstall or clear data to bypass the error.
+5. Verify the installed version, saved layout, app launches, Settings access, and Home return from another app. Compare the Home method with the recorded state, preserving other accessibility services and package states. If verification fails, report the failure and use the earlier recovery record when needed to restore the previous Home; do not silently replace the Home method or disable packages.
+6. Report the old and new app versions and the checks completed. Retain the original recovery record and signing files. A new preview record that points back to Foyer is not a replacement for the original fallback record.
+
+## Preserve recovery information
 
 Keep `.secrets/` and `.state/` private. Preserve the original signing files and the state from the first successful activation. A later preview record whose original Home is Foyer cannot restore an earlier launcher. During migration from another custom launcher, explain that the saved previous Home may be that custom launcher rather than the factory Home.
 
