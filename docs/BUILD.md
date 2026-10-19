@@ -23,9 +23,11 @@ Make Platform Tools available for the installation and recovery commands:
 export PATH="$ANDROID_HOME/platform-tools:$PATH"
 ```
 
-Run from the repository:
+Get the source and run from the repository:
 
 ```sh
+git clone https://github.com/bankerrahul/foyer.git
+cd foyer
 sh build.sh
 sh test.sh
 ```

@@ -3,6 +3,7 @@
   <h1>Foyer</h1>
   <p><strong>A quieter home for your TV.</strong></p>
   <p>Your apps. Your layout. Straight to watching.</p>
+  <p>Set it up with Codex or Claude Code. Use it with your remote.</p>
   <p>Android TV &amp; Google TV · v0.5.0 · Native Java · MIT licensed</p>
   <p>
     <a href="#before-and-after">See the difference</a> ·
@@ -53,49 +54,45 @@ Settings and Minimal screenshots were captured on a Sony BRAVIA VH1 running Foye
 
 ## Get started
 
-This repository includes the launcher source and local build, installation, and recovery scripts. Build an APK, preview it on your TV, then choose whether to make it Home.
+**Enable debugging on your TV, then let Codex or Claude Code handle setup.** The assistant prepares the build tools, builds Foyer, connects to your TV, and checks the installation.
 
-### 1. Build
+1. **Prepare your TV.** Open Settings → About (sometimes under System or Device Preferences), select **Build** seven times, then enable **USB debugging** in Developer options. Enable **Network debugging** or **Wireless debugging** too if your TV offers it. Leave the TV on and note its IP address from network settings.
+2. **Open Codex or Claude Code on your computer.** Use a local session with terminal access, on the same home network as the TV. Wi-Fi or Ethernet is fine. You will need to approve the debugging connection on the TV; some models use wireless pairing or require a USB connection.
+3. **Paste this prompt.** Fill in your TV details, or let the assistant help you find them.
 
-You need **Python 3.9+**, **Java 17**, and the **Android SDK with platform 34 and build-tools 34.0.0**. Installation also needs Android Platform Tools / ADB. No Gradle installation is required. See the [build guide](docs/BUILD.md) for SDK setup and signing details.
+```text
+Set up Foyer as the home screen on my Android TV.
+Repository: https://github.com/bankerrahul/foyer
+TV model: <brand and model>
+TV address: <IP address, or help me find it>
 
-```sh
-git clone https://github.com/bankerrahul/foyer.git
-cd foyer
+Clone the repository and read AGENTS.md, docs/BUILD.md and
+docs/INSTALL.md before acting. Check the required tools on my
+computer and help prepare anything missing. Build and test Foyer,
+then use its installation scripts for this specific TV.
 
-export JAVA_HOME=/path/to/jdk-17
-export ANDROID_HOME=/path/to/android-sdk
-export PATH="$ANDROID_HOME/platform-tools:$PATH"
+Discover my installed apps rather than assuming any favourites.
+Save the previous Home selection and recovery record. Preview Foyer,
+check app launches and remote navigation, then try normal Home
+selection and verify that the Home button returns to Foyer.
 
-sh build.sh
-sh test.sh
+Ask for my explicit approval before disabling a stock launcher.
+If Google TV needs Foyer's optional Accessibility redirect, explain
+it and guide me through enabling it myself on the TV.
+
+Do not debloat, uninstall apps, clear app data, or change firmware,
+picture, HDMI, animation or power settings. Preserve an existing
+Foyer installation's preferences and signing key. If its signing
+key is unavailable, stop rather than uninstalling it.
+
+Keep signing keys, recovery records and device details private.
+Finish with what changed, what you verified, the saved recovery
+file path, and the exact command to restore my previous Home.
 ```
 
-The build produces `out/foyer.apk` and matching `out/foyer.apk.json` integrity metadata. Keep them together. The first build creates a unique signing key in `.secrets/`; back it up privately and reuse it for updates. An independently signed build cannot update an installation signed with someone else's key.
+You handle the TV's debugging and any Accessibility approval prompts; the assistant handles the commands. Setup depends on your TV's debugging support and Home restrictions, so some models need extra guidance. The AI assistant is only used for setup—Foyer itself runs locally without AI or a network connection.
 
-### 2. Preview on your TV
-
-Enable debugging on the TV, authorize your computer, and use its exact ADB device serial or debugging IP and port:
-
-```sh
-sh install.sh --serial YOUR_TV_IP:5555
-```
-
-The script installs Foyer and opens a preview. It saves a recovery record and prints its path before installation. It checks the APK checksum and preserves app data during updates. It never scans your network or chooses another connected TV.
-
-Check app launches, remote navigation, Settings, and any HDMI shortcuts. On newer wireless-debugging setups, use the connection port shown by the TV after pairing; see the [installation guide](docs/INSTALL.md).
-
-### 3. Make Foyer Home
-
-After checking the preview:
-
-```sh
-sh install.sh --serial YOUR_TV_IP:5555 --activate
-```
-
-Activation verifies Android's Home selection and the foreground screen. If selection fails, it attempts to restore the previous Home. **The script never disables another launcher automatically.** Manufacturer overrides may need a separate, explicit choice described in the [installation guide](docs/INSTALL.md#oem-launchers-that-take-over-home).
-
-Some Google TV devices need the optional [Home button redirect](#google-tv-home-button). Check Home from another app and after a restart before relying on your setup.
+Prefer to install it yourself? Follow the [build guide](docs/BUILD.md) and [installation and recovery guide](docs/INSTALL.md). They include manual commands, signing-key backups, updates, and recovery. Keep the original signing key and first successful activation record for future updates or restoration.
 
 ## Use your remote
 
