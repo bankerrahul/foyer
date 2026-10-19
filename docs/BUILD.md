@@ -9,7 +9,17 @@
 
 Obtain the SDK from [Android's command-line tools](https://developer.android.com/studio#command-tools) and a Java 17 JDK such as [Temurin](https://adoptium.net/temurin/releases/?version=17).
 
-After setting `JAVA_HOME`, `ANDROID_HOME`, and the SDK command-line-tools path, install the required SDK packages:
+The computer-side workflow has been verified on macOS. The scripts use a POSIX shell and SDK executables without Windows `.exe` names, so native Windows is not currently supported by these paths. Linux/WSL execution and device connectivity have not been verified.
+
+Set paths to your installed Java 17 JDK and Android SDK. Adjust the command-line-tools path if your SDK uses a layout other than `cmdline-tools/latest`:
+
+```sh
+export JAVA_HOME=/path/to/jdk-17
+export ANDROID_HOME=/path/to/android-sdk
+export PATH="$JAVA_HOME/bin:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH"
+```
+
+Then install the required SDK packages:
 
 ```sh
 sdkmanager "platforms;android-34" "build-tools;34.0.0" "platform-tools"

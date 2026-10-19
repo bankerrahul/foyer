@@ -8,6 +8,8 @@ Use this guide when a user asks an AI assistant to install or update Foyer, or r
 - Guide the user through Developer options and USB, network, or wireless debugging as supported by their TV. Debugging menus vary. The user must approve the connection on the TV; newer wireless-debugging setups may require pairing and a separate connection port. Do not assume enabling USB debugging exposes network ADB.
 - Check Python, Java, Android SDK, and ADB against the build guide. Help prepare missing tools using official sources and follow the user's local approval and SDK license prompts. The build script does not install dependencies itself.
 - Reuse an existing checkout and private signing key when updating. Never overwrite an existing key or uninstall a signature-mismatched installation. If the original key is unavailable, stop and explain the update limitation.
+- For a new setup, clone the official repository into a permanent, user-visible folder rather than a temporary directory. Keep the checkout, signing files, and recovery records together. For a returning user or fresh chat, locate that existing folder before cloning another copy. Consult its private setup notes and verify the target device; never depend only on conversation history.
+- Computer-side compilation and testing have been verified on macOS. The current scripts expect a POSIX shell and SDK executables without Windows `.exe` names. Native Windows is not supported by those paths; Linux/WSL setup and connectivity have not been validated. Explain these limits before attempting an unverified host setup instead of promising identical support.
 
 ## Build, preview, and select Home
 
@@ -38,4 +40,6 @@ If asked to switch back, read the [recovery guide](INSTALL.md#recovery) and insp
 
 ## Report the result
 
-Tell the user what changed, what was verified, and anything that remains untested. Give the exact setup folder, private signing backup location, recovery state path, and restore command. Ask them to retain the setup folder for future updates and restoration. Keep private device addresses and records out of public issues, commits, and screenshots. Do not describe simulated ADB tests as physical-device verification.
+Write private setup notes for each TV under the already Git-ignored `.state/` directory, using a distinct filename such as `.state/living-room-setup-notes.md`. Include the device model/identity, current connection target, original Home, selected Home method, relevant approvals, exact original recovery record and restore commands, installed version, and paths to the signing files. Include steps to turn off the optional Home redirect when applicable. Record file locations, not passwords or key contents. Preserve the first fallback record in these notes when updating; do not replace it with a later record that points back to Foyer.
+
+Tell the user what changed, what was verified, and anything that remains untested. Give the exact setup folder, private setup-notes location, recovery state path, and restore command. Help them make a private backup that includes hidden `.secrets/` and `.state/` directories, and explain that another chat can resume from that folder. Keep private device addresses and records out of public issues, commits, and screenshots. Do not describe simulated ADB tests as physical-device verification.

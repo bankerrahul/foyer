@@ -60,6 +60,8 @@ Settings and Minimal screenshots were captured on a Sony BRAVIA VH1 running Foye
 2. **Open Codex or Claude Code on your computer.** Run it locally so it can connect to the TV, and keep both devices on the same home network. Wi-Fi or Ethernet is fine. The assistant will help with pairing or a USB connection if your TV needs one.
 3. **Paste this prompt.** Fill in your TV details, or let the assistant help you find them.
 
+The computer-side setup has been tested on a Mac. Windows and Linux setup have not been verified yet.
+
 ```text
 Set up Foyer as the home screen on my Android TV.
 Repository: https://github.com/bankerrahul/foyer
@@ -71,12 +73,13 @@ Handle the commands and guide me through any TV prompts.
 Only change my home screen; keep my apps, data and TV settings.
 Ask before turning off the TV's existing home screen app.
 Check that my apps and Home button work, and save instructions
-for switching back to my previous home screen.
+for switching back to my previous home screen. Use a permanent
+setup folder and save private setup notes there for future chats.
 ```
 
 Approve the connection prompt on your TV when it appears. Some TVs need an extra step to make the Home button open Foyer; the assistant will explain it and guide you through it.
 
-**Keep the Foyer setup folder on your computer.** The assistant saves what is needed there for future updates and for switching back to your old home screen. If the TV menus look different, tell the assistant your model and ask for help.
+**Keep the Foyer setup folder on your computer and back it up privately.** It includes hidden files needed for updates and switching back. The assistant will show you where it is and help you save it. You can use a new chat later—just tell the assistant where that folder is. If the TV menus look different, tell the assistant your model and ask for help.
 
 ## Use your remote
 
@@ -95,7 +98,7 @@ Your changes are saved automatically. Hidden apps stay available in **All apps**
 
 ## Update Foyer
 
-Open the same Codex or Claude Code conversation on the computer you used for setup. Keep the TV on with debugging enabled, then paste:
+Open Codex or Claude Code on the computer you used for setup and tell it where your Foyer setup folder is. Keep the TV on with debugging enabled, then paste:
 
 ```text
 Check whether a newer version of Foyer is available for my TV.
@@ -106,17 +109,20 @@ my app order, hidden apps, layout, HDMI shortcuts and Home button
 working as before. Keep my saved recovery information.
 Do not uninstall or reset anything. If something needed for the
 update is missing, explain it before making changes.
+Ask me to identify the TV if it is unclear which one to update.
 ```
 
 The assistant checks for an update, handles the commands, and checks that Foyer still works afterward. Keep your original setup folder so it can update Foyer without losing your settings.
 
 ## Return to your previous Home
 
-Want your old home screen back? Open the same Codex or Claude Code conversation on the computer you used for setup, keep the TV on with debugging enabled, and paste:
+Want your old home screen back? Open Codex or Claude Code on the computer you used for setup and tell it where your Foyer setup folder is. Keep the TV on with debugging enabled, then paste:
 
 ```text
 Switch my TV back to the home screen it used before Foyer.
-Use the saved setup record and Foyer's recovery guide.
+Repository: https://github.com/bankerrahul/foyer
+Follow docs/AI-SETUP.md and use my existing setup folder's
+saved recovery information. Ask which TV if it is unclear.
 Turn off Foyer's Home button redirect if enabled, restore the
 previous Home, and check that the remote's Home button opens it.
 Leave my apps, their data, and Foyer installed.
