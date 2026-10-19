@@ -113,27 +113,20 @@ For an optional starting order, use `apps.txt` or `--apps pkg.one,pkg.two` durin
 
 ## Return to your previous Home
 
-Keep the recovery record from your **first successful activation**. A later update record may point back to Foyer itself.
+Want your old home screen back? Open the same Codex or Claude Code conversation on the computer you used for setup, keep the TV on with debugging enabled, and paste:
 
-```sh
-sh recover.sh --serial YOUR_TV_IP:5555 --state .state/YOUR_ACTIVATION_STATE.json
+```text
+Switch my TV back to the home screen it used before Foyer.
+Use the saved setup record and Foyer's recovery guide.
+Turn off Foyer's Home button redirect if enabled, restore the
+previous Home, and check that the remote's Home button opens it.
+Leave my apps, their data, and Foyer installed.
+If the saved record is missing, ask me before making changes.
 ```
 
-Recovery checks the device identity, restores the previous Home selection and any launcher enabled state changed during that activation, and verifies the result. Foyer stays installed. Keep debugging authorized and available until recovery has been tested; the script needs a working ADB connection. [Full recovery and update guide](docs/INSTALL.md#recovery).
+Keep the Foyer setup folder on your computer—it contains the saved recovery information. The assistant handles the restore commands and guides you through any TV prompts.
 
-### Google TV Home button
-
-Some Google TV firmware protects its Home selection. Foyer includes an optional **Foyer Home button** Accessibility service, off by default. Enable it manually under **Android Settings → Accessibility** and approve Android's prompt. When Google TV's Home opens, the service brings Foyer forward; the original screen may appear briefly.
-
-The service receives Google TV launcher window-state events and matches its exact Home activity. Its configuration disables screen-content retrieval, key filtering, and gestures. It has no internet access. Google TV and its setup package remain enabled with this method. It is a Home redirect, not an assistive accessibility tool.
-
-Turn the service off to return to normal Google TV Home behavior, or run:
-
-```sh
-python3 scripts/device.py disable-home-redirect --serial YOUR_TV_IP:5555
-```
-
-This preserves other accessibility services. If you also changed Home selection or disabled a launcher through a separate activation, use that activation's recovery record afterward. [Redirect and recovery details](docs/INSTALL.md#optional-google-tv-redirect).
+Prefer to do it yourself? See the [manual recovery guide](docs/INSTALL.md#recovery) and [Google TV Home button details](docs/INSTALL.md#optional-google-tv-redirect).
 
 ## Compatibility
 
