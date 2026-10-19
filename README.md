@@ -4,7 +4,7 @@
   <p><strong>A quieter home for your TV.</strong></p>
   <p>Your apps. Your layout. Straight to watching.</p>
   <p>Set it up with Codex or Claude Code. Use it with your remote.</p>
-  <p>Android TV &amp; Google TV · v0.5.0 · Native Java · MIT licensed</p>
+  <p>Android TV &amp; Google TV · Free and open source</p>
   <p>
     <a href="#before-and-after">See the difference</a> ·
     <a href="#get-started">Get started</a> ·
@@ -15,9 +15,9 @@
 
 ![Foyer home screen on an XGIMI HORIZON Ultra, showing Plex, TiviMate and YouTube above a row of utility shortcuts](docs/assets/home.png)
 
-Foyer is a customizable launcher for Android TV and Google TV. It puts the apps you choose on a calm home screen, with large tiles, remote-friendly navigation, and quick access to HDMI inputs and settings. Sponsored rows and recommendation feeds stay out of the way.
+Foyer replaces the home screen on your Android TV or Google TV. Choose the apps you want to see, arrange them with your remote, and get straight to watching. Large tiles and shortcuts to HDMI inputs and settings keep everything within reach.
 
-**No accounts, ads, analytics, or internet permission.** The installed launcher works on its own, without GitHub, a server, or the computer used to build it.
+**No ads, account sign-ups, or tracking.** Once installed, Foyer works offline. You only need the AI assistant for setup.
 
 ## Before and after
 
@@ -26,7 +26,7 @@ Foyer is a customizable launcher for Android TV and Google TV. It puts the apps 
 | [![Original XGIMI home screen with promotional content and recommendation rows](docs/assets/home-before.png)](docs/assets/home-before.png) | [![The same XGIMI with Foyer, three chosen apps and utility shortcuts](docs/assets/home.png)](docs/assets/home.png) |
 | Promotional banners and content rows | Your chosen apps and shortcuts |
 
-Actual captures from the same XGIMI HORIZON Ultra, before customization and after installing Foyer 0.5.0. Click either image for full resolution. The three apps shown are a personal selection; a fresh installation discovers the apps on **your** TV and starts alphabetically.
+Real screenshots from the same XGIMI HORIZON Ultra, before and after Foyer. Click either image to enlarge it. The three apps shown are a personal choice—Foyer finds the apps already on **your** TV.
 
 ## Make room for what you watch
 
@@ -35,9 +35,9 @@ Actual captures from the same XGIMI HORIZON Ultra, before customization and afte
 | Choose your Home | Show the apps you want, reorder them with the remote, and hide unwanted tiles without uninstalling anything. |
 | Keep every app within reach | Open **All apps** for a scrollable logo grid, including apps hidden from Home. Add them back whenever you like. |
 | Make it yours | Adjust tile size, spacing, background, app names, date, and clock. Choose **Minimal** for large tiles on black. |
-| Jump to HDMI | Open registered HDMI inputs from Home. Rename, reorder, hide, or change their shortcut icons inside Foyer. |
-| Keep your setup | App order, hidden tiles, appearance, and input preferences save locally and survive in-place updates. |
-| Return to the previous Home | Preview before switching. Installation saves a device-specific recovery record and includes a restore script. |
+| Jump to HDMI | Open the HDMI inputs your TV makes available. Give their shortcuts names and icons you recognize, or hide the ones you do not use. |
+| Keep your setup | Your app choices and layout are saved on your TV and kept when Foyer is updated. |
+| Return to the previous Home | Ask your AI assistant to bring back the home screen you used before Foyer. |
 
 <table>
   <tr>
@@ -46,7 +46,7 @@ Actual captures from the same XGIMI HORIZON Ultra, before customization and afte
   </tr>
   <tr>
     <td width="50%"><img src="docs/assets/appearance.png" alt="Appearance settings for tiles, spacing, background, app names, date and clock"><br><strong>Appearance</strong><br>Make the layout comfortable from your sofa.</td>
-    <td width="50%"><img src="docs/assets/inputs.png" alt="Inputs settings showing a registered HDMI port"><br><strong>Inputs</strong><br>Arrange shortcuts for the inputs your TV exposes.</td>
+    <td width="50%"><img src="docs/assets/inputs.png" alt="Inputs settings showing a registered HDMI port"><br><strong>Inputs</strong><br>Arrange shortcuts for your available HDMI inputs.</td>
   </tr>
 </table>
 
@@ -54,10 +54,10 @@ Settings and Minimal screenshots were captured on a Sony BRAVIA VH1 running Foye
 
 ## Get started
 
-**Enable debugging on your TV, then let Codex or Claude Code handle setup.** The assistant prepares the build tools, builds Foyer, connects to your TV, and checks the installation.
+**Enable debugging on your TV, then let Codex or Claude Code handle setup.** The assistant takes care of the computer commands and walks you through any prompts on your TV.
 
 1. **Prepare your TV.** Open Settings → About (sometimes under System or Device Preferences), select **Build** seven times, then enable **USB debugging** in Developer options. Enable **Network debugging** or **Wireless debugging** too if your TV offers it. Leave the TV on and note its IP address from network settings.
-2. **Open Codex or Claude Code on your computer.** Use a local session with terminal access, on the same home network as the TV. Wi-Fi or Ethernet is fine. You will need to approve the debugging connection on the TV; some models use wireless pairing or require a USB connection.
+2. **Open Codex or Claude Code on your computer.** Run it locally so it can connect to the TV, and keep both devices on the same home network. Wi-Fi or Ethernet is fine. The assistant will help with pairing or a USB connection if your TV needs one.
 3. **Paste this prompt.** Fill in your TV details, or let the assistant help you find them.
 
 ```text
@@ -66,33 +66,17 @@ Repository: https://github.com/bankerrahul/foyer
 TV model: <brand and model>
 TV address: <IP address, or help me find it>
 
-Clone the repository and read AGENTS.md, docs/BUILD.md and
-docs/INSTALL.md before acting. Check the required tools on my
-computer and help prepare anything missing. Build and test Foyer,
-then use its installation scripts for this specific TV.
-
-Discover my installed apps rather than assuming any favourites.
-Save the previous Home selection and recovery record. Preview Foyer,
-check app launches and remote navigation, then try normal Home
-selection and verify that the Home button returns to Foyer.
-
-Ask for my explicit approval before disabling a stock launcher.
-If Google TV needs Foyer's optional Accessibility redirect, explain
-it and guide me through enabling it myself on the TV.
-
-Do not debloat, uninstall apps, clear app data, or change firmware,
-picture, HDMI, animation or power settings. Preserve an existing
-Foyer installation's preferences and signing key. If its signing
-key is unavailable, stop rather than uninstalling it.
-
-Keep signing keys, recovery records and device details private.
-Finish with what changed, what you verified, the saved recovery
-file path, and the exact command to restore my previous Home.
+Follow the repository's AI setup guide in docs/AI-SETUP.md.
+Handle the commands and guide me through any TV prompts.
+Only change my home screen; keep my apps, data and TV settings.
+Ask before turning off the TV's existing home screen app.
+Check that my apps and Home button work, and save instructions
+for switching back to my previous home screen.
 ```
 
-You handle the TV's debugging and any Accessibility approval prompts; the assistant handles the commands. Setup depends on your TV's debugging support and Home restrictions, so some models need extra guidance. The AI assistant is only used for setup—Foyer itself runs locally without AI or a network connection.
+Approve the connection prompt on your TV when it appears. Some TVs need an extra step to make the Home button open Foyer; the assistant will explain it and guide you through it.
 
-Prefer to install it yourself? Follow the [build guide](docs/BUILD.md) and [installation and recovery guide](docs/INSTALL.md). They include manual commands, signing-key backups, updates, and recovery. Keep the original signing key and first successful activation record for future updates or restoration.
+**Keep the Foyer setup folder on your computer.** The assistant saves what is needed there for future updates and for switching back to your old home screen. If the TV menus look different, tell the assistant your model and ask for help.
 
 ## Use your remote
 
@@ -107,9 +91,7 @@ Prefer to install it yourself? Follow the [build guide](docs/BUILD.md) and [inst
 | Change the layout or inputs | **Customize** in the utility row |
 | Open Android's device settings | **Settings** in the utility row |
 
-Back closes All apps before returning to normal Home navigation. Leaving during a move cancels the unsaved edit. Newly installed apps join the saved order; removed apps disappear. Resetting app order keeps hidden choices intact.
-
-For an optional starting order, use `apps.txt` or `--apps pkg.one,pkg.two` during installation. Use `--apps auto` to reset ordering to alphabetical discovery. Omit `--apps` when updating to preserve a saved order. [More about discovery and ordering](docs/INSTALL.md#app-discovery-and-order).
+Your changes are saved automatically. Hidden apps stay available in **All apps**, and newly installed apps appear automatically. Pressing **Back** in All apps takes you home; pressing it during a move cancels that move.
 
 ## Return to your previous Home
 
@@ -130,36 +112,26 @@ Prefer to do it yourself? See the [manual recovery guide](docs/INSTALL.md#recove
 
 ## Compatibility
 
-Foyer targets Android TV and Google TV on landscape 16:9 displays. The manifest declares **Android 6 / API 23 minimum** and **API 34 target**; the minimum is not a claim of testing every Android version.
+Foyer is made for Android TV and Google TV, including projectors that use them. Version 0.5.0 has been checked on:
 
-Foyer 0.5.0 has been installed and checked on:
-
-| Device | Android | Home method checked |
-| --- | --- | --- |
-| XGIMI HORIZON Ultra / XK03H | 11 | Normal Home selection; recovery to the previous custom launcher |
-| Sony BRAVIA VH1 | 12 | Home selection with an explicitly approved stock launcher disable; recovery verified |
-| Sony BRAVIA VU3 | 14 | Optional Accessibility Home redirect; stock Google TV packages retained |
-
-Home selection, wake/restart behavior, HDMI registration, and vendor settings depend on firmware. Direct HDMI shortcuts require standard inputs exposed by the TV. If none are registered, Foyer can offer a native input selector when one is accessible. It cannot create missing hardware registrations. Samsung Tizen, LG webOS, and Fire TV compatibility are not claimed.
-
-Foyer changes the home screen. It does not debloat the TV, modify firmware or picture settings, or remove advertising inside other apps. No measured performance improvement is claimed. See the [validation record](docs/VALIDATION.md) for automated checks, physical-device results, and remaining limits.
-
-## Build on Foyer
-
-Foyer is a small native Java app with no third-party runtime libraries. The package is `app.foyer.launcher`. The build uses Python's standard library and Android SDK tools.
-
-| Start here | Purpose |
+| Device | Android version |
 | --- | --- |
-| [MainActivity.java](src/app/foyer/launcher/MainActivity.java) | Home layout, All apps, remote navigation, and tile actions |
-| [SettingsActivity.java](src/app/foyer/launcher/SettingsActivity.java) | Manage Home, appearance, and input customization |
-| [LauncherData.java](src/app/foyer/launcher/LauncherData.java) | App and input discovery and saved preferences |
-| [scripts/](scripts/) | Build, signing, installation, and recovery |
-| [tests/](tests/) | Java models, generated APK checks, and simulated ADB recovery cases |
+| XGIMI HORIZON Ultra | 11 |
+| Sony BRAVIA VH1 | 12 |
+| Sony BRAVIA VU3 | 14 |
 
-Run `sh test.sh` after changes and `sh build.sh` for Android code, resources, or manifest changes. The current validation record reports **29 passing automated tests**, alongside physical checks on the devices above. Simulated-device tests do not establish compatibility with every TV.
+Other models may need extra setup. The Home button, starting up after a restart, and available HDMI shortcuts can vary by TV. Foyer can only show the inputs the TV makes available.
 
-Have a bug or an idea? [Open an issue](https://github.com/bankerrahul/foyer/issues) with the Foyer version, TV model, Android version, and steps to reproduce. Remove device addresses and personal information from logs or screenshots. Keep signing keys, recovery records, and build output private. See [build and signing](docs/BUILD.md) and [installation and recovery](docs/INSTALL.md) before changing those paths.
+Samsung TVs using Tizen and LG TVs using webOS cannot run this Android app. Fire TV has not been tested. See the [testing notes](docs/VALIDATION.md) for details about the devices and features checked so far.
+
+Foyer changes your home screen. Your other apps stay installed, and your picture and HDMI settings stay as they are. Ads inside streaming apps are unaffected. A simpler home screen does not guarantee a faster TV.
+
+## Help and development
+
+Need help or have an idea? [Open an issue](https://github.com/bankerrahul/foyer/issues) with your TV model, Android version, and what happened. Leave personal information out of screenshots or logs.
+
+Want to install manually or work on Foyer? Use the [build and developer guide](docs/BUILD.md), [installation and recovery guide](docs/INSTALL.md), and [AI setup guide](docs/AI-SETUP.md).
 
 ## License
 
-[MIT](LICENSE). The original license and copyright notice are preserved in this repository and bundled in the APK at `assets/LICENSE`. Keep them when redistributing the code or a substantial portion of it. Third-party app names, logos, and promotional artwork in screenshots belong to their respective owners; their appearance does not imply endorsement.
+Foyer is open source under the [MIT license](LICENSE). Keep the original license and copyright notice when sharing the code. Third-party app names, logos, and promotional artwork in screenshots belong to their respective owners; their appearance does not imply endorsement.

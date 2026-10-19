@@ -1,4 +1,4 @@
-# Building and signing Foyer
+# Building, signing, and developing Foyer
 
 ## Prerequisites
 
@@ -54,8 +54,30 @@ If an update is rejected because it was signed with another key, the installer s
 
 An unsigned or independently signed rebuild will not be bit-identical to the supplied signed APK. The metadata identifies a specific built artifact; it is an integrity check, not a substitute for trusting the source of the APK and metadata.
 
+## Developer reference
+
+Foyer is a native Java app with no third-party runtime libraries. The package is `app.foyer.launcher`. The build uses Python's standard library and Android SDK tools. The manifest declares minimum Android 6 / API 23 and target API 34. The UI is designed for landscape 16:9 displays. The minimum API is not a claim of testing every Android version or TV.
+
+| Source | Purpose |
+| --- | --- |
+| [MainActivity.java](../src/app/foyer/launcher/MainActivity.java) | Home layout, All apps, remote navigation, and tile actions |
+| [SettingsActivity.java](../src/app/foyer/launcher/SettingsActivity.java) | Manage Home, appearance, and input customization |
+| [LauncherData.java](../src/app/foyer/launcher/LauncherData.java) | App/input discovery and saved preferences |
+| [scripts/](../scripts/) | Build, signing, installation, and recovery |
+| [tests/](../tests/) | Java models, generated APK checks, and simulated ADB recovery cases |
+
+Run `sh test.sh` after changes and `sh build.sh` for Android code, resources, or manifest changes. The [validation record](VALIDATION.md) reports 29 passing automated tests alongside physical checks on the documented devices. Simulated-device tests do not establish compatibility with every TV.
+
+Normal Home selection and OEM overrides differ by firmware. The XGIMI Android 11 check used normal selection; the Sony Android 12 check used an explicitly approved stock launcher disable; the Sony Android 14 check used the optional Accessibility redirect while retaining Google TV packages. Consult the validation record for version-specific checks and restart limitations. Standard TV input registrations are required for direct HDMI shortcuts; an accessible native selector is offered only when the standard map is empty.
+
+The APK declares no requested Android permissions, including internet access. The optional Home redirect is a user-enabled Accessibility service. Its screen-content retrieval, key filtering, and gesture capabilities are disabled; see [installation details](INSTALL.md#optional-google-tv-redirect).
+
+For an AI-assisted device setup, follow [AI-SETUP.md](AI-SETUP.md). For starting app order, reset flags, and updates that retain preferences, see [app discovery and order](INSTALL.md#app-discovery-and-order).
+
 ## Publishable repository
 
 Commit source, tests, resource files, documentation, curated screenshots under `docs/assets/`, and `LICENSE`. Do not commit `.secrets/`, `.state/`, signing keys, generated APKs, passwords, local SDK paths, device addresses, or private device captures. Review every public screenshot for account details and personal information first.
 
 The provided source archive excludes these local files. The ZIP is source-only; for installation use the matching signed APK and its metadata separately.
+
+The original MIT license and copyright notice are preserved in `LICENSE` and bundled in the APK at `assets/LICENSE`. Retain them when redistributing the code or a substantial portion of it.
